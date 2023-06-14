@@ -1,0 +1,172 @@
+package bucles2;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author GUILLEM
+ */
+public class Bucles2 {
+    static Scanner s = new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        s.useDelimiter("\n");
+
+        int option;
+
+        do {
+            System.out.println("MENU: ");
+            System.out.println("[1]Exercise 1");
+            System.out.println("[2]Exercise 2");
+            System.out.println("[3]Exercise 3");
+            System.out.println("[4]Exercise 4");
+            System.out.println("[5]Exercise 5");
+            System.out.println("[6]Exercise 6");
+            System.out.println("[6]Exercise 7");
+            System.out.println("[6]Exercise 8");
+            System.out.println("[6]Exercise 9");
+            System.out.println("[6]Exercise 10");
+
+            System.out.println("[0]Exit");
+
+            System.out.println("Choose an option: ");
+            option = s.nextInt();
+            switch (option) {
+                case 1:
+                    ejercicio1();
+                    break;
+                case 2:
+                    ejercicio2();
+                    break;
+                case 3:
+                    ejercicio3();
+                    break;
+                case 4:
+                    ejercicio4();
+                    break;
+                case 5:
+                    ejercicio5();
+                    break;
+                case 6:
+                    ejercicio6();
+                    break;
+                case 7:
+                    ejercicio7();
+                    break;
+            }
+
+        } while (option != 0);
+    }
+    
+    static void ejercicio1() {
+        System.out.print("Introduce un numero: ");
+        int num = s.nextInt();
+        int suma = 0;
+
+        while (num != 0) {
+            int digito = num % 10;
+            suma += digito;
+            num /= 10;
+        }
+        System.out.println("La suma de los digitos es: " + suma);
+    }
+  
+    static void ejercicio2() {
+            System.out.print("Introduce una palabra o frase: ");
+        String texto = s.nextLine();
+
+        System.out.print("Introduce un caracter: ");
+        char caracter = s.next().charAt(0);
+        
+        int cont = 0;
+
+        for (int i = 0; i < texto.length(); i++) {
+            if (texto.charAt(i) == caracter) {
+                cont++;
+            }
+        }
+        System.out.println("El caracter '" + caracter + "' aparece " + cont + " veces en el texto.");
+    }
+
+    static void ejercicio3() {
+        String palabra = "Hola";
+
+        for (int i = 0; i < palabra.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                System.out.print("   ");
+            }
+            System.out.println(palabra.charAt(i));
+        }
+    }
+    
+
+    static void ejercicio4() {
+        int filas = 10;
+        int columnas = 10;
+
+        System.out.print("\t");
+        for (int i = 1; i <= columnas; i++) {
+            System.out.print(i + "\t");
+        }
+        System.out.println();
+
+        for (int i = 2; i <= filas; i++) {
+            System.out.print(i + "\t");
+
+            for (int j = 1; j <= columnas; j++) {
+                int resultado = i * j;
+                System.out.print(resultado + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+    static void ejercicio5() {
+        System.out.print("Ingresa la cantidad de dinero que quieres apostar: ");
+        int bet = s.nextInt();
+
+        int res = jugarDados();
+
+        if (res == 7 || res == 11) {
+            System.out.println("Felicidades! Has ganado " + bet + " €");
+        } else if (res == 2 || res == 3 || res == 12) {
+            System.out.println("Lo siento, has perdido tu apuesta");
+        } else {
+            System.out.println("Empieza la segunda fase. Debes sacar un " + res);
+
+            boolean seguirJugando = true;
+            while (seguirJugando) {
+                int segundoResultado = jugarDados();
+
+                if (segundoResultado == res) {
+                    System.out.println("Felicidades! Has ganado " + bet + " €");
+                    seguirJugando = false;
+                } else if (segundoResultado == 7) {
+                    System.out.println("Lo siento, has perdido toda tu apuesta");
+                    seguirJugando = false;
+                } else {
+                    System.out.println("Sigue intentandolo...");
+                }
+            }
+        }
+    }
+ public static int jugarDados() {
+        Random random = new Random();
+        int dado1 = random.nextInt(6) + 1;
+        int dado2 = random.nextInt(6) + 1;
+
+        int suma = dado1 + dado2;
+
+        System.out.println("Tirada de dados: " + dado1 + " + " + dado2 + " = " + suma);
+
+        return suma;
+    }
+    static void ejercicio6() {
+        
+    }
+
+    static void ejercicio7() {
+    }
+
+}
